@@ -23,7 +23,8 @@ public class Author {
                   String name,
                   String lastName,
                   String fullName,
-                  LocalDate createdAt) {
+                  LocalDate createdAt
+                  ) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;

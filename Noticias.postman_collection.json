@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n      \"name\": \"Jose\",\n      \"lastName\": \"Lopez\",\n      \"createdAt\": \"2022-12-20\"\n}",
+							"raw": "{\n      \"name\": \"Bart\",\n      \"lastName\": \"Simpson\",\n      \"createdAt\": \"2022-01-29\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -101,7 +101,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"name\": \"Jose Maria\",\n        \"lastName\": \"Lopez\",\n        \"fullName\": \"Jose Lopez\",\n        \"createdAt\": \"2022-12-20\"\n    }",
+							"raw": "{\n        \"createdAt\": \"2022-03-09\"\n        \n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -109,24 +109,47 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/author/3",
+							"raw": "localhost:8080/author/4",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"author",
-								"3"
+								"4"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Get Author By Fullname",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/author/Simpson",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"author",
+								"Simpson"
+							]
+						}
 					},
 					"response": []
 				},
@@ -137,7 +160,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[17]",
+							"raw": "[9]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -145,14 +168,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/author/4/article",
+							"raw": "localhost:8080/author/2/article",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"author",
-								"4",
+								"2",
 								"article"
 							]
 						}
@@ -171,7 +194,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Taragui Rock 2022\",\n    \"description\": \"Se viene el Taragui Rock version 2022\",\n    \"url\": \"www.canal9.com.ar\",\n    \"urlToImage\": \"\",\n    \"publishedAt\": \"2022-08-06\",\n    \"content\": \"Se espera una masiva concurrencia a la nueva edicion del Taragui Rock\"\n}",
+							"raw": "{\n    \"title\": \"Ganó Central\",\n    \"description\": \"ppeepldlsaa\",\n    \"url\": \"www.ole.com.ar\",\n    \"urlToImage\": \"sfevdzcxcv\",\n    \"publishedAt\": \"2022-09-16\",\n    \"content\": \"vvvassfsqqqqq\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -289,7 +312,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"sourceName\": \"TN\",\n    \"code\": \"tn\",\n    \"createdAt\": \"2022-08-17\"\n}",
+							"raw": "{\n    \"sourceName\": \"Ole\",\n    \"code\": \"ole\",\n    \"createdAt\": \"2021-01-26\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

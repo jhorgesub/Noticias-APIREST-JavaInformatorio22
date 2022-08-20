@@ -1,3 +1,4 @@
+/*
 package com.example.informatorio.noticias.converter;
 
 import com.example.informatorio.noticias.domain.Article;
@@ -37,3 +38,4 @@ public class AuthorConverter {
                 article.getSource());
     }
 }
+*/

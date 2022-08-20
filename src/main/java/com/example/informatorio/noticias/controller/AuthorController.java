@@ -1,6 +1,6 @@
 package com.example.informatorio.noticias.controller;
 
-import com.example.informatorio.noticias.converter.AuthorConverter;
+//import com.example.informatorio.noticias.converter.AuthorConverter;
 import com.example.informatorio.noticias.domain.Article;
 import com.example.informatorio.noticias.domain.Author;
 import com.example.informatorio.noticias.dto.AuthorDTO;
@@ -18,13 +18,13 @@ public class AuthorController {
 
     private final AuthorRepository authorRepository;
     private final ArticleRepository articleRepository;
-    private final AuthorConverter authorConverter;
+    //private final AuthorConverter authorConverter;
 
     @Autowired
-    public AuthorController(AuthorRepository authorRepository, ArticleRepository articleRepository, AuthorConverter authorConverter) {
+    public AuthorController(AuthorRepository authorRepository, ArticleRepository articleRepository/*, AuthorConverter authorConverter*/) {
         this.authorRepository = authorRepository;
         this.articleRepository = articleRepository;
-        this.authorConverter = authorConverter;
+        //this.authorConverter = authorConverter;
     }
 
     @GetMapping("/author")
@@ -33,10 +33,10 @@ public class AuthorController {
         return authors;
     }
 
-    @GetMapping()
-    public List<Author> buscarPorPalabra(@RequestParam String word) {
+    @GetMapping("/author/{word}")
+    public List<Author> buscarPorPalabra(@PathVariable("word") String word) {
         return authorRepository.findByFullNameContaining(word);
-    } //no me sale
+    }
 
     @PostMapping("/author")
     public Author createActor(@RequestBody Author author) {
@@ -44,7 +44,7 @@ public class AuthorController {
     }
 
     @PostMapping("/author/{idAuthor}/article")
-    public AuthorDTO addArticleToAuthor(@PathVariable Long idAuthor, @RequestBody List<Long> idArticles) {
+    public Author addArticleToAuthor(@PathVariable Long idAuthor, @RequestBody List<Long> idArticles) {
         Author author = authorRepository.findById(idAuthor).orElse(null); //primero vemos si existe el author
         List<Article> articles = idArticles.stream() //recorro la lista de articles
                 .map(id -> articleRepository.findById(id)) //para encontrar el article con id
@@ -55,7 +55,7 @@ public class AuthorController {
             author.addArticle(article);
         }
         authorRepository.save(author);
-        return authorConverter.toDTO(author);
+        return author;
     }
 
     @DeleteMapping("/author/{idAuthor}")
