@@ -4,6 +4,8 @@ import com.example.informatorio.noticias.domain.Article;
 import com.example.informatorio.noticias.domain.Author;
 import com.example.informatorio.noticias.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +25,8 @@ public class ArticleController {
     }
 
     @PostMapping("/article")
-    public Article createArticle(@RequestBody Article articles) {
-        return articleRepository.save(articles);
+    public ResponseEntity<?> createArticle(@RequestBody Article article) {
+        return new ResponseEntity<>(articleRepository.save(article), HttpStatus.CREATED);
     }
 
     /*@GetMapping("/article")

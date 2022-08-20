@@ -45,6 +45,7 @@ public class Source {
 
     public void setSourceName(String sourceName) {
         this.sourceName = sourceName;
+        this.code = sourceName.toLowerCase().replace(' ','-');
     }
 
     public String getCode() {
@@ -52,7 +53,7 @@ public class Source {
     }
 
     public void setCode(String code) {
-        this.code = code;
+        this.code =  code;
     }
 
     public LocalDate getCreatedAt() {
