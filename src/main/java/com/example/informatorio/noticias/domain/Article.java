@@ -1,5 +1,7 @@
 package com.example.informatorio.noticias.domain;
 
+import org.hibernate.validator.constraints.URL;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -17,7 +19,9 @@ public class Article {
     @NotNull
     @NotBlank
     private String description;
+    @URL(regexp = "[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)")
     private String url;
+    @URL(regexp = "(http(s?):)([/|.|\\w|\\s|-])*\\.(?:jpg|gif|png)")
     private String urlToImage;
     private LocalDate publishedAt;
     private String content;
