@@ -36,15 +36,15 @@ public class AuthorController {
         return authors;
     }*/
 
-    @GetMapping("/author/{word}")
-    public List<Author> buscarPorPalabra(@PathVariable("word") String fullname) {
+    @GetMapping("/author")
+    public List<Author> buscarPorPalabra(@RequestParam String fullname) {
         return authorRepository.findByFullNameContaining(fullname);
     }
 
-    @GetMapping("/author")
+    /*@GetMapping("/author")
     public List<Author> buscarPorFecha(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
         return authorRepository.findByCreatedAtAfter(fecha);
-    }
+    }*/
 
     @PostMapping("/author")
     public Author createActor(@RequestBody Author author) {

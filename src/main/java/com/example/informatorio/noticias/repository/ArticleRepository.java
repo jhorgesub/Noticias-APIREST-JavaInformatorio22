@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Long> {
 
-    List<Article> findByTitleGreaterThan(Integer valor);
+    List<Article> findByTitleAndDescriptionContaining(String title, String description);
 }

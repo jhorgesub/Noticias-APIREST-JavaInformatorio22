@@ -1,12 +1,16 @@
 package com.example.informatorio.noticias.controller;
 
 import com.example.informatorio.noticias.domain.Article;
+import com.example.informatorio.noticias.domain.Author;
 import com.example.informatorio.noticias.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import java.util.List;
-
+@Validated
 @RestController
 public class ArticleController {
 
@@ -23,16 +27,17 @@ public class ArticleController {
         return articleRepository.save(articles);
     }
 
-    @GetMapping("/article")
+    /*@GetMapping("/article")
     public List<Article> getAll() {
         List<Article> articles = articleRepository.findAll();
         return articles;
+    }*/
+
+    @GetMapping("/article") //funciona con una palabra, no con dos
+    public List<Article> buscarPorPalabra(@RequestParam @Valid @Size(min=4) String title,@Valid @Size(min=4) @RequestParam String description) {
+        return articleRepository.findByTitleAndDescriptionContaining(title, description);
     }
 
-    @GetMapping("/article/{valor}")
-    public List<Article> findByWord(@PathVariable("valor") Integer valor) {
-        return articleRepository.findByTitleGreaterThan(valor);
-    }
 
     @DeleteMapping("/article")
     public void deleteArticle(@RequestParam Long id) {
