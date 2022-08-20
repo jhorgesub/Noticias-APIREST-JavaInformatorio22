@@ -29,6 +29,11 @@ public class ArticleController {
         return articles;
     }
 
+    @GetMapping("/article/{valor}")
+    public List<Article> findByWord(@PathVariable("valor") Integer valor) {
+        return articleRepository.findByTitleGreaterThan(valor);
+    }
+
     @DeleteMapping("/article/{idArticle}")
     public void deleteArticle(@PathVariable Long idArticle) {
         articleRepository.deleteById(idArticle);

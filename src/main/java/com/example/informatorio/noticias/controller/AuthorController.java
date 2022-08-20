@@ -6,12 +6,15 @@ import com.example.informatorio.noticias.domain.Author;
 import com.example.informatorio.noticias.dto.AuthorDTO;
 import com.example.informatorio.noticias.repository.ArticleRepository;
 import com.example.informatorio.noticias.repository.AuthorRepository;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 
 @RestController
 public class AuthorController {
@@ -27,15 +30,20 @@ public class AuthorController {
         //this.authorConverter = authorConverter;
     }
 
-    @GetMapping("/author")
+    /*@GetMapping()
     public List<Author> getAll() {
         List<Author> authors = authorRepository.findAll();
         return authors;
-    }
+    }*/
 
     @GetMapping("/author/{word}")
     public List<Author> buscarPorPalabra(@PathVariable("word") String word) {
         return authorRepository.findByFullNameContaining(word);
+    }
+
+    @GetMapping("/author")
+    public List<Author> buscarPorFecha(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
+        return authorRepository.findByCreatedAtAfter(fecha);
     }
 
     @PostMapping("/author")
