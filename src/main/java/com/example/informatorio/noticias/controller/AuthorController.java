@@ -37,8 +37,8 @@ public class AuthorController {
     }*/
 
     @GetMapping("/author/{word}")
-    public List<Author> buscarPorPalabra(@PathVariable("word") String word) {
-        return authorRepository.findByFullNameContaining(word);
+    public List<Author> buscarPorPalabra(@PathVariable("word") String fullname) {
+        return authorRepository.findByFullNameContaining(fullname);
     }
 
     @GetMapping("/author")

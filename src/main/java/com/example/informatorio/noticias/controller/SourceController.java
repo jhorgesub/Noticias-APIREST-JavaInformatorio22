@@ -1,5 +1,6 @@
 package com.example.informatorio.noticias.controller;
 
+import com.example.informatorio.noticias.domain.Author;
 import com.example.informatorio.noticias.domain.Source;
 import com.example.informatorio.noticias.repository.SourceRepository;
 import org.springframework.web.bind.annotation.*;
@@ -20,15 +21,20 @@ public class SourceController {
         return sourceRepository.save(source);
     }
 
-    @DeleteMapping("/source/{idSource}")
-    public void deleteArticle(@PathVariable Long idSource) {
-        sourceRepository.deleteById(idSource);
+    @DeleteMapping("/source")
+    public void deleteSource(@RequestParam Long id) {
+        sourceRepository.deleteById(id);
     }
 
-    @GetMapping("/source")
+    /*@GetMapping("/source")
     public List<Source> getAll() {
         List<Source> sources = sourceRepository.findAll();
         return sources;
+    }*/
+
+    @GetMapping("/source")
+    public List<Source> buscarPorPalabra(@RequestParam String sourcename) {
+        return sourceRepository.findBySourceNameContaining(sourcename);
     }
 
     @PutMapping("/source/{idSource}")

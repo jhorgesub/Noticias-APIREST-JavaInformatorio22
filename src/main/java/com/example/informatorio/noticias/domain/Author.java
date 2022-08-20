@@ -23,13 +23,15 @@ public class Author {
                   String name,
                   String lastName,
                   String fullName,
-                  LocalDate createdAt
+                  LocalDate createdAt,
+                  List<Article> articles
                   ) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.fullName = fullName;
         this.createdAt = createdAt;
+        this.articles = articles;
     }
 
     public Long getId() {
@@ -98,6 +100,7 @@ public class Author {
                 ", lastName='" + lastName + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", createdAt=" + createdAt +
+                ", articles=" + articles +
                 '}';
     }
 }

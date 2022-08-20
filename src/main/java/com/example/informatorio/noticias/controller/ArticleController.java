@@ -34,9 +34,9 @@ public class ArticleController {
         return articleRepository.findByTitleGreaterThan(valor);
     }
 
-    @DeleteMapping("/article/{idArticle}")
-    public void deleteArticle(@PathVariable Long idArticle) {
-        articleRepository.deleteById(idArticle);
+    @DeleteMapping("/article")
+    public void deleteArticle(@RequestParam Long id) {
+        articleRepository.deleteById(id);
     }
 
     @PutMapping("/article/{idArticle}")
