@@ -15,15 +15,23 @@ public class Article {
     private String urlToImage;
     private LocalDate publishedAt;
     private String content;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Author author;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Source source;
 
     public Article() {
     }
 
-    public Article(Long id, String title, String description, String url, String urlToImage, LocalDate publishedAt, String content, Author author, Source source) {
+    public Article(Long id,
+                   String title,
+                   String description,
+                   String url,
+                   String urlToImage,
+                   LocalDate publishedAt,
+                   String content,
+                   Author author,
+                   Source source) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -112,12 +120,12 @@ public class Article {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Article article = (Article) o;
-        return Objects.equals(id, article.id) && Objects.equals(title, article.title) && Objects.equals(description, article.description) && Objects.equals(url, article.url) && Objects.equals(urlToImage, article.urlToImage) && Objects.equals(publishedAt, article.publishedAt) && Objects.equals(content, article.content);
+        return Objects.equals(id, article.id) && Objects.equals(title, article.title) && Objects.equals(description, article.description) && Objects.equals(url, article.url) && Objects.equals(urlToImage, article.urlToImage) && Objects.equals(publishedAt, article.publishedAt) && Objects.equals(content, article.content) && Objects.equals(author, article.author) && Objects.equals(source, article.source);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, url, urlToImage, publishedAt, content);
+        return Objects.hash(id, title, description, url, urlToImage, publishedAt, content, author, source);
     }
 
     @Override

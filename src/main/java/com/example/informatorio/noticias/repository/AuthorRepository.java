@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface AuthorRepository extends JpaRepository<Author,Long> {
-    List<Author> findByNameContaining(String word);
+    List<Author> findByFullNameContaining(String word);
 }
