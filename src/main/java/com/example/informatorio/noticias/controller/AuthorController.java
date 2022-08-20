@@ -32,18 +32,18 @@ public class AuthorController {
         //this.authorConverter = authorConverter;
     }
 
-    /*@GetMapping()
+    @GetMapping("/author")
     public List<Author> getAll() {
         List<Author> authors = authorRepository.findAll();
         return authors;
-    }*/
+    }
 
-    @GetMapping("/author")
-    public List<Author> buscarPorPalabra(@RequestParam String fullname) {
+    @GetMapping("/author/{fullname}")
+    public List<Author> buscarPorPalabra(@PathVariable String fullname) {
         return authorRepository.findByFullNameContaining(fullname);
     }
 
-    /*@GetMapping("/author")
+    /*@GetMapping("/author") //funciona sólo con @RequestParam
     public List<Author> buscarPorFecha(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
         return authorRepository.findByCreatedAtAfter(fecha);
     }*/
@@ -53,7 +53,7 @@ public class AuthorController {
         return new ResponseEntity<>(authorRepository.save(author), HttpStatus.CREATED);
     }
 
-    @PostMapping("/author/{idAuthor}/article")
+    @PostMapping("/author/{idAuthor}/article") //no agrega authors a articles(no funciona con bidireccionalidad, sí con unidireccional)
     public Author addArticleToAuthor(@PathVariable Long idAuthor, @RequestBody List<Long> idArticles) {
         Author author = authorRepository.findById(idAuthor).orElse(null); //primero vemos si existe el author
         List<Article> articles = idArticles.stream() //recorro la lista de articles
@@ -74,11 +74,11 @@ public class AuthorController {
     }
 
     @PutMapping("/author/{idAuthor}")
-    public Author modifyAuthor(@PathVariable Long idAuthor, @RequestBody Author author) {
+    public Author modifyAuthor(@PathVariable("idAuthor") Long idAuthor, @RequestBody Author author) {
         Author authors = authorRepository.findById(idAuthor).get();
         authors.setName(author.getName());
-        authors.setLastName(author.getLastName());
-        authors.setCreatedAt(author.getCreatedAt());
+        /*authors.setLastName(author.getLastName());
+        authors.setCreatedAt(author.getCreatedAt());*/
         return authorRepository.save(authors);
     }
 }

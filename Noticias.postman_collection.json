@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n      \"name\": \"Bart\",\n      \"lastName\": \"Simpson\",\n      \"createdAt\": \"2022-01-29\"\n}",
+							"raw": "{\n      \"name\": \"Homero\",\n      \"lastName\": \"Simpson\",\n      \"createdAt\": \"2022-09-12\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -54,13 +54,19 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/author",
+							"raw": "localhost:8080/author?fecha=2021-09-01",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"author"
+							],
+							"query": [
+								{
+									"key": "fecha",
+									"value": "2021-09-01"
+								}
 							]
 						}
 					},
@@ -101,7 +107,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"createdAt\": \"2022-03-09\"\n        \n    }",
+							"raw": "{\n        \"name\": \"Bart\"       \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -160,7 +166,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[9]",
+							"raw": "[3]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -181,6 +187,30 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Find Author By Date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/author?fecha=2020-06-05",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"author"
+							],
+							"query": [
+								{
+									"key": "fecha",
+									"value": "2020-06-05"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -194,7 +224,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Ganó Central\",\n    \"description\": \"ppeepldlsaa\",\n    \"url\": \"www.ole.com.ar\",\n    \"urlToImage\": \"sfevdzcxcv\",\n    \"publishedAt\": \"2022-09-16\",\n    \"content\": \"vvvassfsqqqqq\"\n}",
+							"raw": "{\n    \"title\": \"\",\n    \"description\": \"Brusco descenso de la temperatura \",\n    \"url\": \"https://www.clarin.com.ar\",\n    \"urlToImage\": \"https://www.clarin.com.ar/image.png\",\n    \"publishedAt\": \"2022-08-09\",\n    \"content\": \"asdcvfabnnyui\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -229,14 +259,19 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/article/2",
+							"raw": "localhost:8080/article?id=9",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"article",
-								"2"
+								"article"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "9"
+								}
 							]
 						}
 					},
@@ -299,6 +334,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Find Article By Word And Description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/article/River/River",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"article",
+								"River",
+								"River"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -312,7 +367,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"sourceName\": \"Ole\",\n    \"code\": \"ole\",\n    \"createdAt\": \"2021-01-26\"\n}",
+							"raw": "{\n    \"sourceName\": \"Diario 24\",\n    \"createdAt\": \"2022-03-03\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -396,14 +451,38 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/source/3",
+							"raw": "localhost:8080/source?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"source"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Source By Word",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/source/infobae",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"source",
-								"3"
+								"infobae"
 							]
 						}
 					},

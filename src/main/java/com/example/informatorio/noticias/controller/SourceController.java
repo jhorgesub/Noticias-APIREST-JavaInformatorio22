@@ -27,14 +27,14 @@ public class SourceController {
         sourceRepository.deleteById(id);
     }
 
-    /*@GetMapping("/source")
+    @GetMapping("/source")
     public List<Source> getAll() {
         List<Source> sources = sourceRepository.findAll();
         return sources;
-    }*/
+    }
 
-    @GetMapping("/source")
-    public List<Source> buscarPorPalabra(@RequestParam String sourcename) {
+    @GetMapping("/source/{sourcename}")
+    public List<Source> buscarPorPalabra(@PathVariable String sourcename) {
         return sourceRepository.findBySourceNameContaining(sourcename);
     }
 
@@ -42,7 +42,7 @@ public class SourceController {
     public Source modifySource(@PathVariable Long idSource, @RequestBody Source source) {
         Source sources = sourceRepository.findById(idSource).get();
         sources.setSourceName(source.getSourceName());
-        sources.setCreatedAt(source.getCreatedAt());
+        /*sources.setCreatedAt(source.getCreatedAt());*/
         return sourceRepository.save(sources);
     }
 }

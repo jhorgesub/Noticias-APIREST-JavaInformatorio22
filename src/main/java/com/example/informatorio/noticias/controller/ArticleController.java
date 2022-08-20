@@ -35,11 +35,10 @@ public class ArticleController {
         return articles;
     }*/
 
-    @GetMapping("/article") //funciona con una palabra, no con dos
-    public List<Article> buscarPorPalabra(@RequestParam @Valid @Size(min=4) String title,@Valid @Size(min=4) @RequestParam String description) {
+    @GetMapping("/article/{title}/{description}") //funciona con una palabra, no con dos
+    public List<Article> buscarPorPalabra(@PathVariable @Valid @Size(min=4) String title,@PathVariable @Valid @Size(min=4)  String description) {
         return articleRepository.findByTitleAndDescriptionContaining(title, description);
     }
-
 
     @DeleteMapping("/article")
     public void deleteArticle(@RequestParam Long id) {
@@ -50,13 +49,13 @@ public class ArticleController {
     public Article modifyAuthor(@PathVariable Long idArticle, @RequestBody Article article) {
         Article articles = articleRepository.findById(idArticle).get();
         articles.setTitle(article.getTitle());
-        articles.setDescription(article.getDescription());
+        /*articles.setDescription(article.getDescription());
         articles.setUrl(article.getUrl());
         articles.setUrlToImage(article.getUrlToImage());
         articles.setPublishedAt(article.getPublishedAt());
         articles.setContent(article.getContent());
         articles.setAuthor(article.getAuthor());
-        articles.setSource(article.getSource());
+        articles.setSource(article.getSource());*/
         return articleRepository.save(articles);
     }
 
